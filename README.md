@@ -8,6 +8,7 @@ This app specifically is a more family-friendly To Do List application for peopl
 
 ## Preferred Branch Naming Conventions
 **Name/#1_The-Issue**
+
 **Name/The-Issue#1**
 
 ## Team Members
