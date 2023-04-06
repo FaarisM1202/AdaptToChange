@@ -5,7 +5,6 @@ This app specifically is a more family-friendly To Do List application for peopl
 
 ## Prerequisites
 [Visual Studio 2022 (Community)](https://visualstudio.microsoft.com/vs/community/)
-Entity Framework Core
 
 ## Preferred Branch Naming Conventions
 **Name/#1_The-Issue**
