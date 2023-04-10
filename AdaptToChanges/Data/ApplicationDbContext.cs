@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AdaptToChanges.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class AdaptToChangesDbContext : IdentityDbContext
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        public AdaptToChangesDbContext(DbContextOptions<AdaptToChangesDbContext> options)
             : base(options)
         {
         }
