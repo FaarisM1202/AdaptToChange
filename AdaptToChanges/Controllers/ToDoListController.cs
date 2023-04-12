@@ -18,8 +18,7 @@ namespace AdaptToChange.Controllers
             List<ToDoList> toDoLists = await (from ToDoList in _context.ToDoLists
                                               select ToDoList).ToListAsync(); 
 
-            ToDoListViewModel listModel = new(toDoLists);
-            return View(listModel);
+            return View(toDoLists);
        }
 
         [HttpGet]
