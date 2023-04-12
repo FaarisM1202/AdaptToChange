@@ -1,0 +1,55 @@
+﻿@model IEnumerable<AdaptToChanges.Models.ToDoList>
+
+@{
+    ViewData["Title"] = "ToDo List";
+}
+
+<h1>ToDo List</h1>
+
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success alert-dismissable fade show" role="alert">
+        @TempData["Message"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ToDoListName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ToDoListDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MemberId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ToDoListName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ToDoListDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MemberId)
+            </td>
+            <td>
+                <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.ToDoListId">Edit</a> |
+                <a class="btn btn-secondary" asp-action="Details" asp-route-id="@item.ToDoListId">Details</a> |
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.ToDoListId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
