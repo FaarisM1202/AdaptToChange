@@ -11,5 +11,7 @@ namespace AdaptToChanges.Data
             : base(options)
         {
         }
+
+        public DbSet<ToDoList> ToDoLists { get; set; }
     }
 }
