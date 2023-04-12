@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace AdaptToChange.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class AddedToDoList : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -48,6 +48,21 @@ namespace AdaptToChange.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ToDoLists",
+                columns: table => new
+                {
+                    ToDoListId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ToDoListName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ToDoListDescription = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    MemberId = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ToDoLists", x => x.ToDoListId);
                 });
 
             migrationBuilder.CreateTable(
@@ -213,6 +228,9 @@ namespace AdaptToChange.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "ToDoLists");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
