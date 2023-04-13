@@ -12,12 +12,14 @@ namespace AdaptToChange.Controllers
         {
                 _context = context;
         }
-    
+
        public async Task<IActionResult> Index(int? id)
        {
             List<ToDoList> toDoLists = await (from ToDoList in _context.ToDoLists
-                                              select ToDoList).ToListAsync(); 
+                                              select ToDoList).ToListAsync();
 
+
+            ToDoListViewModel listModel = new(toDoLists);
             return View(toDoLists);
        }
 
