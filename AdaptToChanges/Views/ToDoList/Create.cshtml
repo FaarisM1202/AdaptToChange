@@ -1,0 +1,48 @@
+﻿@model ToDoList
+
+@{
+    ViewData["Title"] = "Create a new ToDo list";
+}
+
+@if (ViewData["Message"] != null)
+{
+    <div class="alert alert-success">
+        @ViewData["Message"]
+    </div>
+}
+else {
+    <h1>Create a new ToDo List</h1>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="ToDoListName" class="control-label"></label>
+                    <input asp-for="ToDoListName" class="form-control" />
+                    <span asp-validation-for="ToDoListName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ToDoListDescription" class="control-label"></label>
+                    <input asp-for="ToDoListDescription" class="form-control" />
+                    <span asp-validation-for="ToDoListDescription" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="MemberId" class="control-label"></label>
+                    <input asp-for="MemberId" class="form-control" />
+                    <span asp-validation-for="MemberId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+}
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
