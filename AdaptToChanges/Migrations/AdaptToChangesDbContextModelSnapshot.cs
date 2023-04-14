@@ -34,6 +34,10 @@ namespace AdaptToChange.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("MemberName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ToDoListDescription")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");

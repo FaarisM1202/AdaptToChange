@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AdaptToChange.Migrations
 {
     [DbContext(typeof(AdaptToChangesDbContext))]
-    [Migration("20230412214533_AddedToDoList")]
-    partial class AddedToDoList
+    [Migration("20230413203716_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -34,6 +34,10 @@ namespace AdaptToChange.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ToDoListId"));
 
                     b.Property<string>("MemberId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MemberName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

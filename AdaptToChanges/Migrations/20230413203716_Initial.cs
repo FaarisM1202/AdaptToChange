@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace AdaptToChange.Migrations
 {
     /// <inheritdoc />
-    public partial class AddedToDoList : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -58,7 +58,8 @@ namespace AdaptToChange.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ToDoListName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ToDoListDescription = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    MemberId = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    MemberId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    MemberName = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {

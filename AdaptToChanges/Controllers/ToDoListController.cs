@@ -3,7 +3,7 @@ using AdaptToChanges.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace AdaptToChange.Controllers
+namespace AdaptToChanges.Controllers
 {
     public class ToDoListController : Controller
     {
@@ -12,13 +12,15 @@ namespace AdaptToChange.Controllers
         {
                 _context = context;
         }
-    
+
        public async Task<IActionResult> Index(int? id)
        {
             List<ToDoList> toDoLists = await (from ToDoList in _context.ToDoLists
-                                              select ToDoList).ToListAsync(); 
+                                              select ToDoList).ToListAsync();
 
-            return View(toDoLists);
+
+            ToDoListViewModel listModel = new(toDoLists);
+            return View(listModel);
        }
 
         [HttpGet]
@@ -87,7 +89,7 @@ namespace AdaptToChange.Controllers
             {
                 _context.ToDoLists.Remove(listToDelete);
                 await _context.SaveChangesAsync();
-                TempData["Message"] = listToDelete.ToDoListName + " was deleted successfully!";
+                TempData["Message"] = $"{listToDelete.ToDoListName} was deleted successfully!";
                 return RedirectToAction("Index");
             }
 

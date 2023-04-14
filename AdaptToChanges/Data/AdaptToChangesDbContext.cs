@@ -13,5 +13,6 @@ namespace AdaptToChanges.Data
         }
 
         public DbSet<ToDoList> ToDoLists { get; set; }
+        public DbSet<Member> Members { get; set; }
     }
 }
