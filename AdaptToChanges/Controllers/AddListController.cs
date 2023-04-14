@@ -6,22 +6,29 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Xml.Linq;
 
-namespace AdaptToChange.Controllers
+namespace AdaptToChanges.Controllers
 {
     public class AddListController : Controller
     {
         private readonly AdaptToChangesDbContext _context;
-        private const string List = "List";
+        private const string List = "ToDoLists";
+
+        public AddListController(AdaptToChangesDbContext context)
+        {
+            _context = context;
+        }
+
         public IActionResult Add(int id)
         {
-            ToDoList listToAdd = _context.ToDoLists.Where(l => l.ToDoListId == id).SingleOrDefault();
+            ToDoList? listToAdd = _context.ToDoLists.Where(l => l.ToDoListId == id).SingleOrDefault();
 
             if (listToAdd == null)
             {
                 TempData["Message"] = "Sorry! That list no longer exists.";
+                return RedirectToAction("Index", "ToDoLists");
             }
 
-            ToDoList listView = new()
+            ListViewModel listView = new()
             {
                 ToDoListId = listToAdd.ToDoListId,
                 ToDoListName = listToAdd.ToDoListName,
@@ -30,15 +37,15 @@ namespace AdaptToChange.Controllers
                 MemberName = listToAdd.MemberName
             };
 
-            List<ToDoList> listViews = GetExistingListData();
+            List<ListViewModel> listViews = GetExistingListData();
             listViews.Add(listView);
             WriteListCookie(listViews);
 
             TempData["Message"] = "List was added";
-            return RedirectToAction("Index", "ListAdd");
+            return RedirectToAction("Index", "ToDoLists");
         }
 
-        private void WriteListCookie(List<ToDoList> listView)
+        private void WriteListCookie(List<ListViewModel> listView)
         {
             string cookieData = JsonConvert.SerializeObject(listView);
 
@@ -48,35 +55,35 @@ namespace AdaptToChange.Controllers
             });
         }
 
-        private List<ToDoList> GetExistingListData()
+        private List<ListViewModel> GetExistingListData()
         {
             string? cookie = HttpContext.Request.Cookies[List];
             if (string.IsNullOrWhiteSpace(cookie))
             {
-                return new List<ToDoList>();
+                return new List<ListViewModel>();
             }
 
-            return JsonConvert.DeserializeObject<List<ToDoList>>(cookie);
+            return JsonConvert.DeserializeObject<List<ListViewModel>>(cookie);
         }
 
         public IActionResult ListSummary()
         {
-            List<ToDoList> listViews = GetExistingListData();
+            List<ListViewModel> listViews = GetExistingListData();
             return View(listViews);
         }
 
         public IActionResult Remove(int id)
         {
-            List<ToDoList> listViews = GetExistingListData();
+            List<ListViewModel> listViews = GetExistingListData();
 
-            ToDoList? targetList =
+            ListViewModel? targetList =
                 listViews.Where(listViews => listViews.ToDoListId == id).FirstOrDefault();
 
             listViews.Remove(targetList);
 
             WriteListCookie(listViews);
 
-            return RedirectToAction("Index");
+            return RedirectToAction(nameof(ListSummary));
         }
     }
 }
