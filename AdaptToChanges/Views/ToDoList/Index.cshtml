@@ -1,4 +1,4 @@
-﻿@model IEnumerable<AdaptToChanges.Models.ToDoList>
+﻿@model ToDoListViewModel
 
 @{
     ViewData["Title"] = "ToDo List";
@@ -30,7 +30,8 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+        @foreach (ToDoList item in Model.ToDoLists)
+        {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.ToDoListName)
