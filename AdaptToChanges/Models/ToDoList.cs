@@ -30,8 +30,8 @@ namespace AdaptToChanges.Models
         /// The unique identifier for the member who owns the to-do list.
         /// </summary>
         ///         public string MemberId { get; set; }
-        public string MemberName { get; set; }
-        public string MemberId { get; set; }
+/*        public string MemberName { get; set; }
+        public string MemberId { get; set; }*/
     }
 
     public class ListViewModel

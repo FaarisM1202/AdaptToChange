@@ -33,8 +33,8 @@ namespace AdaptToChanges.Controllers
                 ToDoListId = listToAdd.ToDoListId,
                 ToDoListName = listToAdd.ToDoListName,
                 ToDoListDescription = listToAdd.ToDoListDescription,
-                MemberId = listToAdd.MemberId,
-                MemberName = listToAdd.MemberName
+                /*MemberId = listToAdd.MemberId,
+                MemberName = listToAdd.MemberName*/
             };
 
             List<ListViewModel> listViews = GetExistingListData();
