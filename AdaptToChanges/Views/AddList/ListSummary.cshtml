@@ -23,10 +23,10 @@ else {
             <th>
                 @Html.DisplayNameFor(model => model.ToDoListDescription)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.MemberName)
-            </th>
-            <th></th>
+            </th>*@
+            @*<th></th>*@
         </tr>
     </thead>
     <tbody>
@@ -38,9 +38,9 @@ else {
             <td>
                 @Html.DisplayFor(modelItem => item.ToDoListDescription)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.MemberName)
-            </td>
+            </td>*@
             <td>
                 <a class="btn btn-danger" asp-action="Remove" asp-route-id="@item.ToDoListId">Remove List</a>
             </td>
