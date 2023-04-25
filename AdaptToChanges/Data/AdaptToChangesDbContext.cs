@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace AdaptToChanges.Data
 {
-    public class AdaptToChangesDbContext : IdentityDbContext
+    public class AdaptToChangesDbContext : IdentityDbContext<Member>
     {
         public AdaptToChangesDbContext(DbContextOptions<AdaptToChangesDbContext> options)
             : base(options)
@@ -14,13 +14,5 @@ namespace AdaptToChanges.Data
         }
 
         public DbSet<ToDoList> ToDoLists { get; set; }
-        public DbSet<Member> Members { get; set; }
-
-        public string MemberName { get; set; }
-
-        public AdaptToChangesDbContext(DbSet<Member> members)
-        {
-            Members = members;
-        }
     }
 }
