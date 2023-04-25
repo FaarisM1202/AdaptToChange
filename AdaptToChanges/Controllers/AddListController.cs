@@ -13,7 +13,7 @@ namespace AdaptToChanges.Controllers
         private readonly AdaptToChangesDbContext _context;
         private const string List = "ToDoLists";
 
-        public AddListController(AdaptToChangesDbContext context)
+        public AddListController(Data.AdaptToChangesDbContext context)
         {
             _context = context;
         }

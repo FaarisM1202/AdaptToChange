@@ -1,6 +1,7 @@
 ﻿using AdaptToChanges.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 
 namespace AdaptToChanges.Data
@@ -14,6 +15,8 @@ namespace AdaptToChanges.Data
 
         public DbSet<ToDoList> ToDoLists { get; set; }
         public DbSet<Member> Members { get; set; }
+
+        public string MemberName { get; set; }
 
         public AdaptToChangesDbContext(DbSet<Member> members)
         {

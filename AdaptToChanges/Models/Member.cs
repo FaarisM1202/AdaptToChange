@@ -1,21 +1,24 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 namespace AdaptToChanges.Models
 {
-    public class Member
+    public class Member : IdentityUser
     {
-        [Key]
-        public int MemberId { get; set; }
         [Required]
         public string MemberName { get; set; }
-
-        public string Username { get; set; }
-        [Required]
-        public string Email { get; set; }
-        [Required]
-        public string Password { get; set; }
-
-        public string PhoneNumber { get; set; }
     }
 
 
+/*  public class AdaptToChangesDbContext : IdentityDbContext
+    {
+
+        public DbSet<Member> Member { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+        }
+    }*/
 }

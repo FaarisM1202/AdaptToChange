@@ -1,5 +1,5 @@
-﻿using AdaptToChanges.Models;
-using AdaptToChanges.Data;
+﻿using AdaptToChanges.Data;
+using AdaptToChanges.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,7 +10,7 @@ namespace AdaptToChanges.Controllers
         private readonly AdaptToChangesDbContext _context;
         public ToDoListController(AdaptToChangesDbContext context)
         {
-                _context = context;
+            _context = context;
         }
 
        public async Task<IActionResult> Index(int? id)
