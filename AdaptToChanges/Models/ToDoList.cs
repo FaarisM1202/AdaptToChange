@@ -25,21 +25,12 @@ namespace AdaptToChanges.Models
         /// </summary>
         [Required]
         public string ToDoListDescription { get; set; }
-
-        /// <summary>
-        /// The unique identifier for the member who owns the to-do list.
-        /// </summary>
-        ///         public string MemberId { get; set; }
-/*        public string MemberName { get; set; }
-        public string MemberId { get; set; }*/
     }
 
     public class ListViewModel
     {
-        public int ToDoListId { get; set; }
         public string ToDoListName { get; set; }
         public string ToDoListDescription { get; set; }
         public string MemberName { get; set; }
-        public string MemberId { get; set; }
     }
 }
