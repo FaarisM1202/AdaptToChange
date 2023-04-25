@@ -28,16 +28,14 @@ namespace AdaptToChanges.Controllers
                 return RedirectToAction("Index", "ToDoLists");
             }
 
-            ListViewModel listView = new()
+            ToDoList listView = new()
             {
                 ToDoListId = listToAdd.ToDoListId,
                 ToDoListName = listToAdd.ToDoListName,
                 ToDoListDescription = listToAdd.ToDoListDescription,
-                /*MemberId = listToAdd.MemberId,
-                MemberName = listToAdd.MemberName*/
             };
 
-            List<ListViewModel> listViews = GetExistingListData();
+            List<ToDoList> listViews = GetExistingListData();
             listViews.Add(listView);
             WriteListCookie(listViews);
 
@@ -45,7 +43,7 @@ namespace AdaptToChanges.Controllers
             return RedirectToAction("Index", "ToDoLists");
         }
 
-        private void WriteListCookie(List<ListViewModel> listView)
+        private void WriteListCookie(List<ToDoList> listView)
         {
             string cookieData = JsonConvert.SerializeObject(listView);
 
@@ -55,28 +53,28 @@ namespace AdaptToChanges.Controllers
             });
         }
 
-        private List<ListViewModel> GetExistingListData()
+        private List<ToDoList> GetExistingListData()
         {
             string? cookie = HttpContext.Request.Cookies[List];
             if (string.IsNullOrWhiteSpace(cookie))
             {
-                return new List<ListViewModel>();
+                return new List<ToDoList>();
             }
 
-            return JsonConvert.DeserializeObject<List<ListViewModel>>(cookie);
+            return JsonConvert.DeserializeObject<List<ToDoList>>(cookie);
         }
 
         public IActionResult ListSummary()
         {
-            List<ListViewModel> listViews = GetExistingListData();
+            List<ToDoList> listViews = GetExistingListData();
             return View(listViews);
         }
 
         public IActionResult Remove(int id)
         {
-            List<ListViewModel> listViews = GetExistingListData();
+            List<ToDoList> listViews = GetExistingListData();
 
-            ListViewModel? targetList =
+            ToDoList? targetList =
                 listViews.Where(listViews => listViews.ToDoListId == id).FirstOrDefault();
 
             listViews.Remove(targetList);
