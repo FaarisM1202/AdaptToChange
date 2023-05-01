@@ -26,11 +26,4 @@ namespace AdaptToChanges.Models
         [Required]
         public string ToDoListDescription { get; set; }
     }
-
-    public class ListViewModel
-    {
-        public string ToDoListName { get; set; }
-        public string ToDoListDescription { get; set; }
-        public string MemberName { get; set; }
-    }
 }
