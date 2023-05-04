@@ -12,7 +12,10 @@ namespace AdaptToChanges.Models
         public List<ToDoList> ToDoLists { get; private set; }
 
         public int ToDoListId { get; private set; }
+
         public string ToDoListName { get; set; }
         public string ToDoListDescription { get; set; }
+
+        public string ToDoListItems { get; set; }
     }
 }

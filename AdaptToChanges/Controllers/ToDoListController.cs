@@ -43,6 +43,7 @@ namespace AdaptToChanges.Controllers
             return View(toDoList);
         }
 
+        [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
             ToDoList? listToEdit = await _context.ToDoLists.FindAsync(id);
@@ -55,6 +56,7 @@ namespace AdaptToChanges.Controllers
             return View(listToEdit);
         }
 
+        [HttpPost]
         public async Task<IActionResult> Edit(ToDoList toDoListModel)
         {
             if(ModelState.IsValid) 
@@ -81,6 +83,7 @@ namespace AdaptToChanges.Controllers
             return View(listToDelete);
         }
 
+        [HttpPost, ActionName("Delete")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             ToDoList? listToDelete = await _context.ToDoLists.FindAsync(id);
