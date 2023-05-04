@@ -21,6 +21,11 @@
                 <span asp-validation-for="ToDoListName" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="ToDoListItems" class="control-label"></label>
+                <input asp-for="ToDoListItems" class="form-control" />
+                <span asp-validation-for="ToDoListItems" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="ToDoListDescription" class="control-label"></label>
                 <input asp-for="ToDoListDescription" class="form-control" />
                 <span asp-validation-for="ToDoListDescription" class="text-danger"></span>
