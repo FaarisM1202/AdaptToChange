@@ -4,7 +4,13 @@ namespace AdaptToChanges.Models
 {
     public class ToDoListViewModel
     {
-        {
+        /// <summary>
+        /// This is a ViewModel of a to-do list taking in a parameter
+        /// of an object lists of to-do list.
+        /// </summary>
+        /// <param name="toDoLists"></param>
+        public ToDoListViewModel(List<ToDoList> toDoLists) 
+        { 
             ToDoLists = toDoLists;
         }
 
