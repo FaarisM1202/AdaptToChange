@@ -4,7 +4,7 @@ namespace AdaptToChanges.Models
 {
     public class ToDoListViewModel
     {
-        public ToDoListViewModel(List<ToDoList> toDoLists) 
+        public ToDoListViewModel(List<ToDoList> toDoLists)
         {
             ToDoLists = toDoLists;
         }
