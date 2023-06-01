@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.Mvc.DataAnnotations;
 
 namespace AdaptToChanges.Models
 {
@@ -31,4 +30,14 @@ namespace AdaptToChanges.Models
         /// </summary>
         public string ToDoListItems { get; set; }
     }
+    
+    public class ListSummaryViewModel
+    {
+
+        public int ToDoListId { get; set; }
+        public string ToDoListName { get; set; }
+
+        public string ToDoListItems { get; set; }
+    }
+
 }
