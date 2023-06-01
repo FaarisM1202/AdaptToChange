@@ -25,5 +25,10 @@ namespace AdaptToChanges.Models
         /// </summary>
         [Required]
         public string ToDoListDescription { get; set; }
+
+        /// <summary>
+        /// The items in the to-do list.
+        /// </summary>
+        public string ToDoListItems { get; set; }
     }
 }
