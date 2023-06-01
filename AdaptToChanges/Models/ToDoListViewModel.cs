@@ -10,7 +10,7 @@ namespace AdaptToChanges.Models
         /// </summary>
         /// <param name="toDoLists"></param>
         public ToDoListViewModel(List<ToDoList> toDoLists) 
-        {
+        { 
             ToDoLists = toDoLists;
         }
 

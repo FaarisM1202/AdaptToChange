@@ -15,6 +15,8 @@ namespace AdaptToChanges.Controllers
 
        public async Task<IActionResult> Index(int? id)
        {
+
+
             List<ToDoList> toDoLists = await (from ToDoList in _context.ToDoLists
                                               select ToDoList).ToListAsync();
 
