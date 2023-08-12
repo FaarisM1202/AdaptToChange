@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace AdaptToChanges.Data
 {
-    public class AdaptToChangesDbContext : IdentityDbContext<Member>
+    public class AdaptToChangesDbContext : IdentityDbContext<IdentityUser>
     {
         public AdaptToChangesDbContext(DbContextOptions<AdaptToChangesDbContext> options)
             : base(options)
