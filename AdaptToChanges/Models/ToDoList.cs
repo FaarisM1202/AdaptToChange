@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace AdaptToChanges.Models
 {
@@ -31,13 +29,8 @@ namespace AdaptToChanges.Models
         /// The items in the to-do list.
         /// </summary>
         public string ToDoListItems { get; set; }
-
-        /// <summary>
-        /// The user assigned to the List.
-        /// </summary>
-        public string Assignee { get; set; }
     }
-
+    
     public class ListSummaryViewModel
     {
 
@@ -45,8 +38,6 @@ namespace AdaptToChanges.Models
         public string ToDoListName { get; set; }
 
         public string ToDoListItems { get; set; }
-
-        public string Assignee { get; set; }
     }
 
 }
