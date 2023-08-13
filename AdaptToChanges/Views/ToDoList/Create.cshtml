@@ -1,4 +1,4 @@
-﻿@model ToDoList
+﻿@model ToDoListViewModel
 
 @{
     ViewData["Title"] = "Create a new ToDo list";
@@ -32,6 +32,12 @@ else {
                     <input asp-for="ToDoListDescription" class="form-control" />
                     <span asp-validation-for="ToDoListDescription" class="text-danger"></span>
                 </div>
+                <div class="form-group">
+                    <label asp-for="Assignee" class="control-label"></label>
+                    <input asp-for="Assignee" type="text" class="form-control" />
+                    <span asp-validation-for="Assignee" class="text-danger"></span>
+                </div>
+                <br />
                 <div class="form-group">
                     <input type="submit" value="Create" class="btn btn-primary" />
                 </div>
