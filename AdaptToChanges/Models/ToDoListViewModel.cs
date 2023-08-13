@@ -1,16 +1,22 @@
 ﻿using Microsoft.Identity.Client;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace AdaptToChanges.Models
 {
     public class ToDoListViewModel
     {
+        public ToDoListViewModel()
+        {
+        }
+
         /// <summary>
         /// This is a ViewModel of a to-do list taking in a parameter
         /// of an object lists of to-do list.
         /// </summary>
         /// <param name="toDoLists"></param>
         public ToDoListViewModel(List<ToDoList> toDoLists) 
-        {
+        { 
             ToDoLists = toDoLists;
         }
 
@@ -39,5 +45,7 @@ namespace AdaptToChanges.Models
         /// The items of the to-do list
         /// </summary>
         public string ToDoListItems { get; set; }
+
+        public string Assignee { get; set; }
     }
 }

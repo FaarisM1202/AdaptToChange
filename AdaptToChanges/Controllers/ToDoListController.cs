@@ -1,7 +1,12 @@
-﻿using AdaptToChanges.Data;
+﻿using AdaptToChange.Migrations;
+using AdaptToChanges.Data;
 using AdaptToChanges.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 namespace AdaptToChanges.Controllers
 {
@@ -13,17 +18,20 @@ namespace AdaptToChanges.Controllers
             _context = context;
         }
 
-       public async Task<IActionResult> Index(int? id)
-       {
+        public async Task<IActionResult> Index(int? id)
+        {
+
+
             List<ToDoList> toDoLists = await (from ToDoList in _context.ToDoLists
                                               select ToDoList).ToListAsync();
 
 
             ToDoListViewModel listModel = new(toDoLists);
             return View(listModel);
-       }
+        }
 
         [HttpGet]
+        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -32,7 +40,7 @@ namespace AdaptToChanges.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(ToDoList toDoList)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 _context.ToDoLists.Add(toDoList);
                 await _context.SaveChangesAsync();
@@ -44,11 +52,12 @@ namespace AdaptToChanges.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> Edit(int id)
         {
             ToDoList? listToEdit = await _context.ToDoLists.FindAsync(id);
 
-            if(listToEdit == null) 
+            if (listToEdit == null)
             {
                 return NotFound();
             }
@@ -59,7 +68,7 @@ namespace AdaptToChanges.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(ToDoList toDoListModel)
         {
-            if(ModelState.IsValid) 
+            if (ModelState.IsValid)
             {
                 _context.ToDoLists.Update(toDoListModel);
                 await _context.SaveChangesAsync();
@@ -67,15 +76,17 @@ namespace AdaptToChanges.Controllers
                 TempData["Message"] = $"{toDoListModel.ToDoListName} was updated successfully!";
                 return RedirectToAction("Index");
             }
-            
+
             return View(toDoListModel);
         }
 
+        [HttpGet]
+        [Authorize]
         public async Task<IActionResult> Delete(int id)
         {
             ToDoList? listToDelete = await _context.ToDoLists.FindAsync(id);
 
-            if(listToDelete == null)
+            if (listToDelete == null)
             {
                 return NotFound();
             }
@@ -88,7 +99,7 @@ namespace AdaptToChanges.Controllers
         {
             ToDoList? listToDelete = await _context.ToDoLists.FindAsync(id);
 
-            if(listToDelete != null)
+            if (listToDelete != null)
             {
                 _context.ToDoLists.Remove(listToDelete);
                 await _context.SaveChangesAsync();
@@ -104,7 +115,7 @@ namespace AdaptToChanges.Controllers
         {
             ToDoList? listToDescription = await _context.ToDoLists.FindAsync(id);
 
-            if(listToDescription == null)
+            if (listToDescription == null)
             {
                 return NotFound();
             }
