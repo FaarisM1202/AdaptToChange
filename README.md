@@ -13,7 +13,8 @@ This app specifically is a more family-friendly To Do List application for peopl
 
 ## Team Members
 Cheyenne Edgar [(CheyenneProgrammer96)](https://github.com/CheyenneProgrammer96), 
-Faaris Mohamed [(FaarisM1202)](https://github.com/FaarisM1202)
+Faaris Mohamed [(FaarisM1202)](https://github.com/FaarisM1202),
+Michael Armiger [(Armiger21)](https://github.com/Armiger21)
 
 ## Website Link
 [ToDoList Website Home Page](https://localhost:7036/)
