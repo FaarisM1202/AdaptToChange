@@ -361,3 +361,4 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/AdaptToChanges/Properties/ServiceDependencies/AdaptToChangeAccessibilityWebsite - Zip Deploy/profile.arm.json
